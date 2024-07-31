@@ -1,4 +1,5 @@
 from django.urls import path
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 from api.views import (
     ArticleCreateView,
@@ -33,5 +34,9 @@ urlpatterns = [
         "articles/delete/<int:pk>/",
         ArticleDeleteView.as_view(),
         name="article-delete",
+    ),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"
     ),
 ]

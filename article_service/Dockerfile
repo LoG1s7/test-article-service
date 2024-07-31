@@ -1,13 +1,13 @@
-FROM python:3.8-slim
+FROM python:3.11-slim
 
-WORKDIR /data
+WORKDIR /app
 
 RUN pip install --upgrade pip
 
-COPY ./article_service requirements.txt .
+COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt --no-cache-dir
 
-COPY ./article_service .
+COPY . .
 
 CMD ["gunicorn", "article_service.wsgi:application", "--bind", "0:8000"]
