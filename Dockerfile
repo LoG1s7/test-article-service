@@ -1,10 +1,10 @@
 FROM python:3.10-slim
 
-WORKDIR /app
+WORKDIR /data
 
 RUN pip install --upgrade pip
 
-COPY requirements.txt .
+COPY ./article_service requirements.txt .
 
 RUN pip3 install -r requirements.txt --no-cache-dir
 
